@@ -1,11 +1,96 @@
-#webCamWindow {
-  border: 1px solid #000;
-  width: 640px;
-  height:  480px;
+h1{
   position: absolute;
-  top: 0;
+  left: 0px;
+  top: 250px;
+  margin: 0 auto;
+  width: 100%;
+  background-color: white;
+  border: 1px solid black;
+  text-align: center;
+}
+#webCamWindow {
+  position: absolute;
+  /*border: 1px solid #000;*/
   opacity: 1;
-  left: 0;
+}
+
+.tiles{
+  position: absolute;
+  width: 97px;
+  height: 250px;
+  border: 2px solid black;
+  background-color: #fff;
+}
+
+#tile1, #tile3, #tile5, #tile7, #tile9, #tile11, #tile13 {
+  background-color: #000;
+}
+
+#tile0{
+  top: 0px;
+  left: 0px;
+}
+#tile1{
+  top: 0px;
+  left: 98px;
+}
+#tile2{
+  top: 0px;
+  left: 195px;
+}
+#tile3{
+  top: 0px;
+  left: 292px;
+}
+#tile4{
+  top: 0px;
+  left: 389px;
+}
+#tile5{
+  top: 0px;
+  left: 487px;
+}
+#tile6{
+  top: 0px;
+  left: 584px;
+}
+#tile7{
+  top: 0px;
+  left: 681px;
+}
+#tile8{
+  top: 0px;
+  left: 778px;
+}
+#tile9{
+  top: 0px;
+  left: 875px;
+}
+#tile10{
+  top: 0px;
+  left: 972px;
+}
+#tile11{
+  top: 0px;
+  left: 1069px;
+}
+#tile12{
+  top: 0px;
+  left: 1166px;
+}
+#tile13{
+  top: 0px;
+  left: 1263px;
+}
+#tile14{
+  top: 0px;
+  left: 1360px;
+}
+
+#tile2 {
+/*  background-image: url('http://downloadicons.net/sites/default/files/music-symbol-icons-63631.png');
+*/
+  background-image: url('https://www.tattooforaweek.com/images/music_note_tattoo.jpg');
 }
 
 #canvas {
@@ -13,8 +98,8 @@
   opacity: 1;
   top: 0;
   left: 0;
-  width: 640px;
-  height:  480px;
+  width: 100%;
+  height: 100%;
  background-repeat: no-repeat;
 }
 
@@ -26,10 +111,10 @@
   background: rgba(255,0,0,0.3);
 }
 
-#bottom {
+/*#bottom {
   position: relative;
   width: 640px;
   height: 300px;
   background-color: grey;
-  top: 500px;
 }
+*/

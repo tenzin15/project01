@@ -26,3 +26,10 @@
   background: rgba(255,0,0,0.3);
 }
 
+#bottom {
+  position: relative;
+  width: 640px;
+  height: 300px;
+  background-color: grey;
+  top: 500px;
+}

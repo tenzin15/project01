@@ -105,8 +105,17 @@
 		 */
 		function main() {
 			try{
-				render();
-			} catch(e) {
+				render();if (document.getElementById('movement').style.width.length > 0 || document.getElementById('movement').style.height.length > 0)
+          {
+            document.getElementById('bottom').innerHTML = `<h1>Motion Detected</h1>`;
+            document.getElementById('bottom').innerHTML += '<h1>X:'+ document.getElementById('movement').getBoundingClientRect().top+'</h1>';
+            document.getElementById('bottom').innerHTML += '<h1>Y:'+ document.getElementById('movement').getBoundingClientRect().bottom+'</h1>';
+            document.getElementById('bottom').innerHTML += '<h1>Width:'+ document.getElementById('movement').clientWidth+'</h1>';
+            document.getElementById('bottom').innerHTML += '<h1>Height:'+ document.getElementById('movement').clientHeight+'</h1>';
+          }
+        else
+          document.getElementById('bottom').innerHTML = `<h1>No Motion Detected</h1>`;
+      } catch(e) {
 				console.log(e);
 				return;
 			}

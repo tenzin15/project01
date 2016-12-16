@@ -44,9 +44,6 @@ let returnTileObject = (id) => {
       }
 }
 
-
-
-
 $( document ).ready(function() {
   //var core = new MotionDetector.Core();
   console.log("I am logged.");
@@ -61,9 +58,6 @@ $( document ).ready(function() {
   //     }
   // });
 
-  let score = 0;
-  let missesLeft = 10;
-  let hits = 0;
   let tile0 = new Tile($('.tiles').eq(0).attr('id'), 'white');
   let tile1 = new Tile($('.tiles').eq(1).attr('id'), 'black');
   let tile2 = new Tile($('.tiles').eq(2).attr('id'), 'white');
@@ -80,29 +74,35 @@ $( document ).ready(function() {
   let tile13 = new Tile($('.tiles').eq(13).attr('id'), 'black');
   let tile14 = new Tile($('.tiles').eq(14).attr('id'), 'white');
 
-  let deleteMusicIcon = () => {
-    $('.tiles').eq(2).css('background-image', '');
-    $('.tiles').eq(10).css('background-image', '');
-    console.log("3 secs");
-  }
-
   let addMusicIcon = () => {
     $('.tiles').eq(2).css('background-image', 'url(https://www.tattooforaweek.com/images/music_note_tattoo.jpg)');
     tile2.hasMusicIcon(true);
     $('.tiles').eq(10).css('background-image', 'url(https://www.tattooforaweek.com/images/music_note_tattoo.jpg)');
     tile10.hasMusicIcon(true);
-    console.log("6 secs");
+    console.log("add musicIcon");
   }
 
-  let timeCounter = (n) => n+1;
+  let deleteMusicIcon = () => {
+    $('.tiles').eq(2).css('background-image', '');
+    $('.tiles').eq(10).css('background-image', '');
+    console.log("delete musicIcon");
+  }
 
-  window.setTimeout(addMusicIcon, 2000);
-  window.setTimeout(deleteMusicIcon, 4000);
+  let count = 0, millisecs = 1000;
+  while (count < 10) {
+    window.setTimeout(addMusicIcon, millisecs);
+    window.setTimeout(deleteMusicIcon, millisecs+2000);
+    millisecs += 4000;
+    count++;
+  }
 
-  $('#tile2, #tile10').on('click', function(event) {
+  let score = 0, missesLeft = 10, hits = 0;
+  $('.tiles').click(function(e,i) {
+    if (this.style.backgroundImage !== '') {
       score += 5;
       hits++;
       $('#innerHits').html(`Hits: ${hits}`);
       $('#currentScore').html(`Score: ${score}`);
+    }
   });
 });

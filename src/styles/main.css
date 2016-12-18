@@ -22,18 +22,18 @@
   width: 12.5%;
   height: 250px;
   border: 2px solid black;
-  background-color: #fff;
+  background-color: #000;
   box-sizing: border-box;
-  font-size: 20px;
+  font-size: 50px;
   text-align: center;
 }
-#tile1,#tile2,#tile5,#tile7 {
+/*#tile1,#tile2,#tile5,#tile7 {
   background-color: black;
-}
-.tiles {
-  animation: tile0 10s linear infinite;
-}
-@keyframes tile0 {
+}*/
+/*tiles {
+  animation: tilesAnimation 15s linear alternate;
+}*/
+@keyframes tilesAnimation {
   0% {left: 0%}
   20% {left: 20%;}
   40% {left: 40%}
@@ -41,73 +41,6 @@
   80% {left: 80%;}
   100% {left: 100%;}
 }
-
-/*
-#tile0{
-  top: 0px;
-  left: 0px;
-}
-#tile1{
-  top: 0px;
-  left: 98px;
-}
-#tile2{
-  top: 0px;
-  left: 195px;
-}
-#tile3{
-  top: 0px;
-  left: 292px;
-}
-#tile4{
-  top: 0px;
-  left: 389px;
-}
-#tile5{
-  top: 0px;
-  left: 487px;
-}
-#tile6{
-  top: 0px;
-  left: 584px;
-}
-#tile7{
-  top: 0px;
-  left: 681px;
-}
-#tile8{
-  top: 0px;
-  left: 778px;
-}
-#tile9{
-  top: 0px;
-  left: 875px;
-}
-#tile10{
-  top: 0px;
-  left: 972px;
-}
-#tile11{
-  top: 0px;
-  left: 1069px;
-}
-#tile12{
-  top: 0px;
-  left: 1166px;
-}
-#tile13{
-  top: 0px;
-  left: 1263px;
-}
-#tile14{
-  top: 0px;
-  left: 1360px;
-}
-#tile2 {
-  background-image: url('https://www.tattooforaweek.com/images/music_note_tattoo.jpg');
-  font-size: 50px;
-}
-*/
 #canvas {
   position: absolute;
   opacity: 1;
@@ -117,7 +50,6 @@
   height: 100%;
  background-repeat: no-repeat;
 }
-
 #movement {
   position: absolute;
   top: 0;

@@ -2,7 +2,7 @@ class Tile{
   // class attributes and constructor
   constructor(id, color) {
     this.id = id;
-    this.color = color;
+    this.color = 'black';
     this.musicIcon = false;
     this.tapped = false;
   }
@@ -14,35 +14,58 @@ class Tile{
 $(document).ready(function() {
   //var core = new MotionDetector.Core();
 
-  // the piano tiles on the top screen
-  let tiles = new Array(15);
-  for (let i = 0; i < tiles.length; i++) {
-    i % 2 === 0? tiles[i] = new Tile('tile'+String(i), 'white'): tiles[i] = new Tile('tile'+String(i), 'black');
+  // create 7 piano tiles object
+  let tilesArray = new Array(7);
+  for (let i = 0; i < tilesArray.length; i++) {
+    i % 2 === 0? tilesArray[i] = new Tile('tile'+String(i)): tilesArray[i] = new Tile('tile'+String(i));
   }
 
-  // let turnTilesToBlack = () => {
-  //   let i = 0;
-  //   while (i < 7) {
-  //     $('.tiles').eq(i).css('background-color', 'black');
-  //     i += 2;
-  //   }
-  // }
+  let randomTiles = () => {
+    // randomly choose 3 tiles
+    let randomIndex = new Set();
+    while (randomIndex.size < 3) {
+        let temp = Math.floor(Math.random()*100)%7;
+        if (!randomIndex.has(temp))
+          randomIndex.add(temp);
+    }
+    // set color to white, assign music icon for randomly selected once
+    // rest of tiles assign black color
+    $('.tiles').each((index, el) => {
+      if (randomIndex.has(index)) {
+        $('.tiles').eq(index).css({
+            'background-color': 'white',
+            'background-image': 'url(\'src/img/music_icon.png\')',
+            'background-size': '50px 50px',
+            'background-repeat': 'no-repeat',
+            'background-position': 'center'
+          });
+        // set properties of Tile objects
+        tilesArray[index].color = 'white';
+        tilesArray[index].hasMusicIcon(true);
+      }
+      else {
+        $('.tiles').eq(index).css('background-color', 'black');
+      }
+    });
+  }
 
-  // let turnTilesToWhite = () => {
-  //   let i = 1;
-  //   while (i < 8) {
-  //     $('.tiles').eq(i).css('background-color', 'white');
-  //     i += 2;
-  //   }
-  // }
+  let animateTiles = () => {
+    $('.tiles').css('animation', 'tilesAnimation 15s linear infinite');
+  }
 
-  // let count = 0, millisecs = 1000;
-  // while (count < 10) {
-  //   window.setTimeout(turnTilesToBlack, millisecs);
-  //   window.setTimeout(turnTilesToWhite, millisecs);
-  //   millisecs += 2000;
-  //   count++;
-  // }
+  let removeAnimation = () => {
+    $('.tiles').css('animation', '');
+  }
+
+  // call randomTiles every 15s (animation time) to random music tiles
+  let millisecs = 0;
+  while (millisecs <= 150000) {
+    window.setTimeout(randomTiles, millisecs);
+    window.setTimeout(animateTiles, millisecs);
+    window.setTimeout(removeAnimation, millisecs+15000);
+    millisecs += 15000;
+  }
+
 
   // $('#tile0').css('background-image', 'url(https://www.tattooforaweek.com/images/music_note_tattoo.jpg)');
   // $('#tile4').css('background-image', 'url(https://www.tattooforaweek.com/images/music_note_tattoo.jpg)');

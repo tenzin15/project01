@@ -3,33 +3,40 @@
 	<head>
 		<title>Air Piano</title>
 		<link rel="stylesheet" type="text/css" href="src/styles/main.css"">
+    <link href="https://fonts.googleapis.com/css?family=Mirza" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
-      <div class="wrapper">
-<!--     <video id="webCamWindow" autoplay></video>
+  <!--     <video id="webCamWindow" autoplay></video>
  -->
-        <div class="tiles" id = 'tile0'></div>
-        <div class="tiles" id = 'tile1'></div>
-        <div class="tiles" id = 'tile2'></div>
-        <div class="tiles" id = 'tile3'></div>
-        <div class="tiles" id = 'tile4'></div>
-        <div class="tiles" id = 'tile5'></div>
-        <div class="tiles" id = 'tile6'></div>
-        <!-- <div id="score">
-          <div id="maxScore">Max Score: 0</div>
-          <div id="currentScore">Score: 0</div>
-        </div>
-        <div id="hits">
-          <div id="innerHits">Hits: 0</div>
-          <div id="missesLeft">Misses Left: 10</div>
-        </div> -->
+      <div id="scoreboard">
+        <div id="score">Score: 0</div>
+        <div id="hits">Hits: 0</div>
+        <div id="missesLeft">Misses Left: 10</div>
+      </div>
+
+      <div class="wrapper">
+        <div class="tiles outer" id = 'tile0'></div>
+        <div class="tiles betweenTiles"></div>
+        <div class="tiles outer" id = 'tile1'></div>
+        <div class="tiles betweenTiles"></div>
+        <div class="tiles outer" id = 'tile2'></div>
+        <div class="tiles betweenTiles"></div>
+        <div class="tiles outer" id = 'tile3'></div>
+        <div class="tiles betweenTiles"></div>
+        <div class="tiles outer" id = 'tile4'></div>
+        <div class="tiles betweenTiles"></div>
+        <div class="tiles outer" id = 'tile5'></div>
+        <div class="tiles betweenTiles"></div>
+        <div class="tiles outer" id = 'tile6'></div>
+        <div class="tiles betweenTiles"></div>
+      </div>
+
 <!--         <h1>Put your head below the tiles</h1>
  -->
 <!-- 		<div id="movement"></div>
  -->    <!-- <div id="canvas"></div> -->
-    </div>
 <!--     <div id="bottom"></div>
  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

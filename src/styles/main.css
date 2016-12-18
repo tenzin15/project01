@@ -1,3 +1,7 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 /*h1{
   position: absolute;
   left: 0px;
@@ -8,54 +12,36 @@
   border: 1px solid black;
   text-align: center;
 }*/
-.wrapper {font-size: 0;}
-
-#score, #hits{
-  position: relative;
-  float: left;
-  top: 0px;
-  font-size: 20px;
-  border: 2px solid black;
+.wrapper {
+  font-size: 0;
+  background: #000;
 }
-#score{
-  width: 195px;
-  height: 555px;
-  left: 0px;
-}
-#hits{
-  width: 195px;
-  height: 555px;
-  left: 1025px;
-}
-#maxScore, #currentScore, #innerHits, #missesLeft{
-  position: relative;
-  margin: 30px auto;
-  width: 50%;
-  width: 140px;
-  height: 100px;
-  top: 140px;
-  text-align: center;
-}
-
-#webCamWindow {
-  position: absolute;
-  /*border: 1px solid #000;*/
-  opacity: 1;
-}
-
-.tiles{
+.tiles {
   position: relative;
   display: inline-block;
-  width: 93px;
+  width: 12.5%;
   height: 250px;
   border: 2px solid black;
   background-color: #fff;
   box-sizing: border-box;
+  font-size: 20px;
+  text-align: center;
+}
+#tile1,#tile2,#tile5,#tile7 {
+  background-color: black;
+}
+.tiles {
+  animation: tile0 10s linear infinite;
+}
+@keyframes tile0 {
+  0% {left: 0%}
+  20% {left: 20%;}
+  40% {left: 40%}
+  60% {left: 60%;}
+  80% {left: 80%;}
+  100% {left: 100%;}
 }
 
-#tile1, #tile3, #tile5, #tile7, #tile9, #tile11, #tile13 {
-  background-color: #000;
-}
 /*
 #tile0{
   top: 0px;
@@ -117,7 +103,6 @@
   top: 0px;
   left: 1360px;
 }
-
 #tile2 {
   background-image: url('https://www.tattooforaweek.com/images/music_note_tattoo.jpg');
   font-size: 50px;
@@ -140,11 +125,41 @@
   border: 1px solid red;
   background: rgba(255,0,0,0.3);
 }
-
-/*#bottom {
+#score, #hits{
+  position: relative;
+  float: left;
+  top: 0px;
+  font-size: 20px;
+  border: 2px solid black;
+}
+#score{
+  width: 195px;
+  height: 555px;
+  left: 0px;
+}
+#hits{
+  width: 195px;
+  height: 555px;
+  left: 1025px;
+}
+#maxScore, #currentScore, #innerHits, #missesLeft{
+  position: relative;
+  margin: 30px auto;
+  width: 50%;
+  width: 140px;
+  height: 100px;
+  top: 140px;
+  text-align: center;
+}
+#webCamWindow {
+  position: absolute;
+  /*border: 1px solid #000;*/
+  opacity: 1;
+}
+#bottom {
   position: relative;
   width: 640px;
   height: 300px;
   background-color: grey;
 }
-*/
+

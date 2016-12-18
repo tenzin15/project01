@@ -3,7 +3,7 @@ class Tile{
   constructor(id, color) {
     this.id = id;
     this.color = color;
-    this.musicIcon = false;       // if this has the music icon
+    this.musicIcon = false;
     this.tapped = false;
   }
   // class methods
@@ -11,98 +11,72 @@ class Tile{
   isTapped(bool) { this.tapped = bool; }
 }
 
-let returnTileObject = (id) => {
-      switch(id) {
-       case("0"):
-        return tile0;
-       case("1"):
-        return tile1;
-       case("2"):
-        return tile2;
-       case("3"):
-        return tile3;
-       case("4"):
-        return tile4;
-       case("5"):
-        return tile5;
-       case("6"):
-        return tile6;
-       case("7"):
-        return tile7;
-       case("8"):
-        return tile8;
-       case("9"):
-        return tile9;
-       case("10"):
-        return tile10;
-       case("11"):
-        return tile11;
-       case("12"):
-        return tile12;
-       case("13"):
-        return tile13;
-      }
-}
-
-$( document ).ready(function() {
+$(document).ready(function() {
   //var core = new MotionDetector.Core();
-  console.log("I am logged.");
 
-  // $('.tiles').on('click', function(event, index) {
-  //   console.log(index);
-  //     if (returnTileObject(String(index)).musicIcon) {
-  //       score += 5;
-  //       hits++;
-  //       $('#innerHits').html(`Hits: ${hits}`);
-  //       $('#currentScore').html(`Score: ${score}`);
-  //     }
+  // the piano tiles on the top screen
+  let tiles = new Array(15);
+  for (let i = 0; i < tiles.length; i++) {
+    i % 2 === 0? tiles[i] = new Tile('tile'+String(i), 'white'): tiles[i] = new Tile('tile'+String(i), 'black');
+  }
+
+  // let turnTilesToBlack = () => {
+  //   let i = 0;
+  //   while (i < 7) {
+  //     $('.tiles').eq(i).css('background-color', 'black');
+  //     i += 2;
+  //   }
+  // }
+
+  // let turnTilesToWhite = () => {
+  //   let i = 1;
+  //   while (i < 8) {
+  //     $('.tiles').eq(i).css('background-color', 'white');
+  //     i += 2;
+  //   }
+  // }
+
+  // let count = 0, millisecs = 1000;
+  // while (count < 10) {
+  //   window.setTimeout(turnTilesToBlack, millisecs);
+  //   window.setTimeout(turnTilesToWhite, millisecs);
+  //   millisecs += 2000;
+  //   count++;
+  // }
+
+  // $('#tile0').css('background-image', 'url(https://www.tattooforaweek.com/images/music_note_tattoo.jpg)');
+  // $('#tile4').css('background-image', 'url(https://www.tattooforaweek.com/images/music_note_tattoo.jpg)');
+
+
+  // let addMusicIcon = () => {
+  //   $('.tiles').eq(2).css('background-image', 'url(https://www.tattooforaweek.com/images/music_note_tattoo.jpg)');
+  //   tile2.hasMusicIcon(true);
+  //   $('.tiles').eq(10).css('background-image', 'url(https://www.tattooforaweek.com/images/music_note_tattoo.jpg)');
+  //   tile10.hasMusicIcon(true);
+  //   console.log("add musicIcon");
+  // }
+
+  // let deleteMusicIcon = () => {
+  //   $('.tiles').eq(2).css('background-image', '');
+  //   $('.tiles').eq(10).css('background-image', '');
+  //   console.log("delete musicIcon");
+  // }
+
+  // let count = 0, millisecs = 1000;
+  // while (count < 10) {
+  //   window.setTimeout(addMusicIcon, millisecs);
+  //   window.setTimeout(deleteMusicIcon, millisecs+2000);
+  //   millisecs += 4000;
+  //   count++;
+  // }
+
+  // let score = 0, missesLeft = 10, hits = 0;
+  // $('.tiles').click(function(e,i) {
+  //   if (this.style.backgroundImage !== '') {
+  //     score += 5;
+  //     hits++;
+  //     $('#innerHits').html(`Hits: ${hits}`);
+  //     $('#currentScore').html(`Score: ${score}`);
+  //   }
   // });
-
-  let tile0 = new Tile($('.tiles').eq(0).attr('id'), 'white');
-  let tile1 = new Tile($('.tiles').eq(1).attr('id'), 'black');
-  let tile2 = new Tile($('.tiles').eq(2).attr('id'), 'white');
-  let tile3 = new Tile($('.tiles').eq(3).attr('id'), 'black');
-  let tile4 = new Tile($('.tiles').eq(4).attr('id'), 'white');
-  let tile5 = new Tile($('.tiles').eq(5).attr('id'), 'black');
-  let tile6 = new Tile($('.tiles').eq(6).attr('id'), 'white');
-  let tile7 = new Tile($('.tiles').eq(7).attr('id'), 'black');
-  let tile8 = new Tile($('.tiles').eq(8).attr('id'), 'white');
-  let tile9 = new Tile($('.tiles').eq(9).attr('id'), 'black');
-  let tile10 = new Tile($('.tiles').eq(10).attr('id'), 'white');
-  let tile11 = new Tile($('.tiles').eq(11).attr('id'), 'black');
-  let tile12 = new Tile($('.tiles').eq(12).attr('id'), 'white');
-  let tile13 = new Tile($('.tiles').eq(13).attr('id'), 'black');
-  let tile14 = new Tile($('.tiles').eq(14).attr('id'), 'white');
-
-  let addMusicIcon = () => {
-    $('.tiles').eq(2).css('background-image', 'url(https://www.tattooforaweek.com/images/music_note_tattoo.jpg)');
-    tile2.hasMusicIcon(true);
-    $('.tiles').eq(10).css('background-image', 'url(https://www.tattooforaweek.com/images/music_note_tattoo.jpg)');
-    tile10.hasMusicIcon(true);
-    console.log("add musicIcon");
-  }
-
-  let deleteMusicIcon = () => {
-    $('.tiles').eq(2).css('background-image', '');
-    $('.tiles').eq(10).css('background-image', '');
-    console.log("delete musicIcon");
-  }
-
-  let count = 0, millisecs = 1000;
-  while (count < 10) {
-    window.setTimeout(addMusicIcon, millisecs);
-    window.setTimeout(deleteMusicIcon, millisecs+2000);
-    millisecs += 4000;
-    count++;
-  }
-
-  let score = 0, missesLeft = 10, hits = 0;
-  $('.tiles').click(function(e,i) {
-    if (this.style.backgroundImage !== '') {
-      score += 5;
-      hits++;
-      $('#innerHits').html(`Hits: ${hits}`);
-      $('#currentScore').html(`Score: ${score}`);
-    }
-  });
 });

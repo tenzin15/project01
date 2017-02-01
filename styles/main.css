@@ -29,7 +29,6 @@ audio {
   background-color: black;
   box-sizing: border-box;
 }
-
 .betweenTiles {
   background-color: black;
 }
@@ -53,40 +52,46 @@ audio {
   font-size: 30px;
 }
 #score, #hits, #missesLeft, #level {
-  /*width: 100px;
-  height: 30px;
-  background-color: grey;
-  border: 2px solid white;*/
   float: left;
   margin: 0 auto;
   width: calc(100%/4);
+}
+#webCamWindow {
+  border: 1px solid #000;
+  width: 640px;
+  height:  480px;
+  position: absolute;
+  top: 350px;
+  left: 350px;
+  opacity: 1;
 }
 /*#canvas {
   position: absolute;
   opacity: 1;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
- background-repeat: no-repeat;
-}
+  width: 640px;
+  height:  480px;
+  background-image: url('https://s30.postimg.org/umdmpqsep/image.jpg');
+  background-repeat: no-repeat;
+}*/
 #movement {
   position: absolute;
-  top: 0;
+  /*top: 0;
   left: 0;
   border: 1px solid red;
-  background: rgba(255,0,0,0.3);
-}
-#webCamWindow {
-  position: absolute;
-  border: 1px solid #000;
-  opacity: 1;
+  background: rgba(255,0,0,0.1);*/
+  background-image: url('http://icons.iconarchive.com/icons/iconshock/lumina-general/256/hand-icon.png');
+  background-size: 200px 200px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 #bottom {
   position: relative;
-  width: 640px;
+  width: 340px;
   height: 300px;
   background-color: grey;
+  border: 1px solid black;
+  top: 150px;
+  left: 5px;
 }
-
-*/

@@ -1,7 +1,4 @@
-$(document).ready(function() {
-  // var core = new MotionDetector.Core();
-
-  // create 7 piano tiles object
+// create 7 piano tiles object
   let tilesArray = new Array(7);
   for (let i = 0; i < tilesArray.length; i++) {
     tilesArray[i] = new Tile('tile'+String(i));
@@ -33,7 +30,7 @@ $(document).ready(function() {
             if (!diffKeys.has(randChar)) {
               diffKeys.add(randChar);
               tilesArray[index].setKey(randChar);
-              imageUrl = `src/img/music_icon_${randChar}.png`;
+              imageUrl = `img/music_icon_${randChar}.png`;
               break;
             }
           }
@@ -59,7 +56,13 @@ $(document).ready(function() {
 
   // animate the entire tile, keyframes defined in main.css
   let animateTiles = () => {
-      $('.tiles').css('animation', 'tilesAnimation 10s linear infinite');
+      $('.tiles').css('animation', 'tilesAnimation 5s linear infinite');
+      tilesArray.forEach((el, index) => {
+        if (el.key) {
+          console.log(el.id, $(`#${el.id}`)[0].offsetWidth);
+          console.log(el.id, $(`#${el.id}`)[0].offsetLeft);
+        }
+      });
   }
 
   // scoreboard
@@ -92,11 +95,11 @@ $(document).ready(function() {
     // call randomTiles every 4s (animation time) to random music tiles
     // the game will last for 400s max
     let millisecs = 0;
-    while (millisecs <= 100000) {
+    while (millisecs <= 50000) {
         window.setTimeout(randomTiles, millisecs);
         window.setTimeout(animateTiles, millisecs);
-        window.setTimeout(removeAnimation, millisecs+10000);
-        millisecs += 10000;
+        window.setTimeout(removeAnimation, millisecs+5000);
+        millisecs += 5000;
     }
   }
 
@@ -131,5 +134,3 @@ $(document).ready(function() {
   // initialize the game
   randomTiles();
   document.querySelector('audio').pause();
-
-});

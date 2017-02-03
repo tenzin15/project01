@@ -1,16 +1,16 @@
-// create 7 piano tiles object
+  // create 7 piano tiles object
   let tilesArray = new Array(7);
   for (let i = 0; i < tilesArray.length; i++) {
     tilesArray[i] = new Tile('tile'+String(i));
   }
 
-  // create 3 random tiles with music
+  // create 4 random tiles with music
   let randomTiles = () => {
-      // A,S,E,D,F,G key code
-      const keyCode = [65, 83, 69, 68, 70, 71];
-      // randomly choose 3 tiles
+      // A,S,E,D,F,G,U,O,N,B,P,H,X key code
+      const keyCode = [65, 83, 69, 68, 70, 71, 85, 79, 78, 65, 80, 72, 88];
+      // randomly choose 4 tiles
       let randomIndex = new Set();
-      while (randomIndex.size < 3) {
+      while (randomIndex.size < 5) {
           let temp = Math.floor(Math.random()*100)%6;
           if (!randomIndex.has(temp))
             randomIndex.add(temp);
@@ -26,7 +26,7 @@
           tilesArray[index].setMusicIcon(true);
           // store unique keys/images
           while (true) {
-            const randChar = String.fromCharCode(keyCode[Math.floor(Math.random()*100)%6]);
+            const randChar = String.fromCharCode(keyCode[Math.floor(Math.random()*100)%13]);
             if (!diffKeys.has(randChar)) {
               diffKeys.add(randChar);
               tilesArray[index].setKey(randChar);
@@ -66,7 +66,7 @@
   }
 
   // scoreboard
-  let score = 0, missesLeft = 10, hits = 0;
+  let score = 0, missesLeft = 20, hits = 0;
   // store pressed keys while game in play
   let pressedKeys = new Set();
 

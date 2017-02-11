@@ -3,6 +3,7 @@
 	<head>
 		<title>Piano Keys</title>
 		<link rel="stylesheet" type="text/css" href="styles/main.css" media="all">
+    <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
@@ -10,7 +11,7 @@
       <div id="scoreboard">
         <div id="level">Level: 1</div>
         <div id="hits">Hits: 0</div>
-        <div id="missesLeft">Misses Left: 10</div>
+        <div id="missesLeft">Misses Left: 5</div>
       </div>
 
       <div class="wrapper">
@@ -36,14 +37,15 @@
 
       <div id="gameInfo">
         Game Info:<br /><br />
-        Hit 20 keys correctly to complete the level.<br />
-        Miss more than 10 keys, you lose the level.<br />
+        Hit <span class="winLossNumber">20</span> keys correctly to complete the level.<br />
+        Miss more than <span class="winLossNumber">5</span> keys, you lose the level.<br />
         Press <span id="enterToStart">Enter</span> to start.<br />
       </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/Tile.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script src="sweetalert-master/dist/sweetalert.min.js"></script>
 	</body>
 </html>
 

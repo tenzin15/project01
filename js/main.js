@@ -1,3 +1,10 @@
+  // stores all the window.setTimeout() for animation purposes
+  // is also used for removing all the animations once the game is over
+  let setTimers = [];
+
+  // scoreboard
+  let score = 0, missesLeft = 5, hits = 0;
+
   // create 7 piano tiles object
   let tilesArray = new Array(7);
   for (let i = 0; i < tilesArray.length; i++) {
@@ -6,6 +13,21 @@
 
   // create 4 random tiles with music
   let randomTiles = () => {
+
+      // before creating tiles, check if player lose or not
+      // Game lose if misses 5 keys
+      if (missesLeft <= 1) {
+        swal("Sorry! You Lose!")
+        $('#level').html('Oops! Level 1 Not Completed.')
+        document.querySelector('audio').pause();
+        removeAnimation();
+        // reset all window.setTimeout() for animation
+        // once game is over
+        for (var i = 0; i < setTimers.length; i++) {
+          clearTimeout(setTimers[i]);
+        }
+      }
+
       // A,S,E,D,F,G,U,O,N,B,P,H,X key code
       const keyCode = [65, 83, 69, 68, 70, 71, 85, 79, 78, 66, 80, 72, 88];
       let randomIndex = new Set();
@@ -16,7 +38,6 @@
 
       $('.outer').each((index, el) => {
         if (index % 2 !== 0) {
-          console.log('I am here ', index);
           // store url of random key/image
           let imageUrl = '';
           // set properties of Tile objects
@@ -29,7 +50,6 @@
               diffKeys.add(randChar);
               tilesArray[index].setKey(randChar);
               imageUrl = `img/music_icon_${randChar}.png`;
-              console.log(imageUrl);
               break;
             }
           }
@@ -58,14 +78,12 @@
       $('.tiles').css('animation', 'tilesAnimation 5s linear infinite');
       tilesArray.forEach((el, index) => {
         if (el.key) {
-          console.log(el.id, $(`#${el.id}`)[0].offsetWidth);
-          console.log(el.id, $(`#${el.id}`)[0].offsetLeft);
+          $(`#${el.id}`)[0].offsetWidth;
+          $(`#${el.id}`)[0].offsetLeft;
         }
       });
   }
 
-  // scoreboard
-  let score = 0, missesLeft = 10, hits = 0;
   // store pressed keys while game in play
   let pressedKeys = new Set();
 
@@ -75,9 +93,14 @@
       $('.tiles').css('animation', '');
       // decrement misses left if a key is missed
       // within the time frame
-      if (pressedKeys.size < 3) {
-        missesLeft -= 3 - pressedKeys.size;
-        $('#missesLeft').html(`Misses Left: ${missesLeft}`);
+      if (missesLeft > 0) {
+        if (pressedKeys.size < 3) {
+          missesLeft -= 3 - pressedKeys.size;
+          $('#missesLeft').html(`Misses Left: ${missesLeft}`);
+        }
+      }
+      else {
+          $('#missesLeft').html(`Misses Left: 0`);
       }
       // reset the pressedKeys Set for the next frame
       pressedKeys = new Set();
@@ -95,9 +118,9 @@
     // the game will last for 400s max
     let millisecs = 0;
     while (millisecs <= 50000) {
-        window.setTimeout(randomTiles, millisecs);
-        window.setTimeout(animateTiles, millisecs);
-        window.setTimeout(removeAnimation, millisecs+5000);
+        setTimers.push(window.setTimeout(randomTiles, millisecs));
+        setTimers.push(window.setTimeout(animateTiles, millisecs));
+        setTimers.push(window.setTimeout(removeAnimation, millisecs+5000));
         millisecs += 5000;
     }
   }
@@ -108,6 +131,7 @@
       if (event.which === 13) {
         startGame();
       }
+
       tilesArray.forEach((e,i) => {
       if (e.key && (e.key === String.fromCharCode(event.which) || e.key.toLowerCase() === String.fromCharCode(event.which))) {
         if (e.hasMusicIcon()) {
@@ -122,17 +146,18 @@
           }
         }
       });
-      // Game win if socre hits 100
-      // if (score > 99) {
-      //   alert('You Win! Level 1 Completed.');
-      //   document.querySelector('audio').pause();
-      //   removeAnimation();
-      // }
-      /// Game win of hits is 20
+
+      // Game win of hits is 20
       if (hits === 20) {
-        $('#level').html('Sweet!!! Level 1 Completed! ')
+        swal("Congratulations! You Win!!!")
+        $('#level').html('Level 1 Completed!')
         document.querySelector('audio').pause();
         removeAnimation();
+        // reset all window.setTimeout() for animation
+        // once game is over
+        for (var i = 0; i < setTimers.length; i++) {
+          clearTimeout(setTimers[i]);
+        }
       }
   });
 

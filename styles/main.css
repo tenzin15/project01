@@ -71,9 +71,11 @@ audio {
 }
 
 #enterToStart {
-  background-color: lightgrey;
-  padding: 0.2rem;
-  padding-right: 0.4rem;
-  padding-left: 0.4rem;
-  border: 0.2rem solid black;
+  color: red;
 }
+
+.winLossNumber {
+  color: red;
+}
+
+

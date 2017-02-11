@@ -7,30 +7,29 @@
   // create 4 random tiles with music
   let randomTiles = () => {
       // A,S,E,D,F,G,U,O,N,B,P,H,X key code
-      const keyCode = [65, 83, 69, 68, 70, 71, 85, 79, 78, 65, 80, 72, 88];
-      // randomly choose 4 tiles
+      const keyCode = [65, 83, 69, 68, 70, 71, 85, 79, 78, 66, 80, 72, 88];
       let randomIndex = new Set();
-      while (randomIndex.size < 5) {
-          let temp = Math.floor(Math.random()*100)%6;
-          if (!randomIndex.has(temp))
-            randomIndex.add(temp);
-      }
+
       // store unique keys
       let diffKeys = new Set();
-      // set color to white, assign music icon for randomly selected once
+      // set color to white, assign randomly selected music keys
+
       $('.outer').each((index, el) => {
-        if (randomIndex.has(index)) {
+        if (index % 2 !== 0) {
+          console.log('I am here ', index);
           // store url of random key/image
-          let imageUrl = ''
+          let imageUrl = '';
           // set properties of Tile objects
           tilesArray[index].setMusicIcon(true);
           // store unique keys/images
+          // every odd index gets a tile with random key
           while (true) {
             const randChar = String.fromCharCode(keyCode[Math.floor(Math.random()*100)%13]);
             if (!diffKeys.has(randChar)) {
               diffKeys.add(randChar);
               tilesArray[index].setKey(randChar);
               imageUrl = `img/music_icon_${randChar}.png`;
+              console.log(imageUrl);
               break;
             }
           }
@@ -41,7 +40,7 @@
               'background-size': '50px 50px',
               'background-repeat': 'no-repeat',
               'background-position': 'center'
-            });
+          });
         }
         else {
           $('.outer').eq(index).css('background-image', '');
@@ -66,7 +65,7 @@
   }
 
   // scoreboard
-  let score = 0, missesLeft = 20, hits = 0;
+  let score = 0, missesLeft = 10, hits = 0;
   // store pressed keys while game in play
   let pressedKeys = new Set();
 
@@ -124,8 +123,14 @@
         }
       });
       // Game win if socre hits 100
-      if (score > 99) {
-        alert('You Win! Level 1 Completed.');
+      // if (score > 99) {
+      //   alert('You Win! Level 1 Completed.');
+      //   document.querySelector('audio').pause();
+      //   removeAnimation();
+      // }
+      /// Game win of hits is 20
+      if (hits === 20) {
+        $('#level').html('Sweet!!! Level 1 Completed! ')
         document.querySelector('audio').pause();
         removeAnimation();
       }
